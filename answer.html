@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  ul {
+    overflow: hidden;
+    list-style: none;
+  }
+  li {
+    float: left;
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #444;
+    cursor: pointer;
+  }
+  li.checked {
+    color: #fff;
+    background: red;
+    border: 1px solid red;
+  }
+  </style>
+</head>
+<body>
+  <ul data-index="0">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="1">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="2">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="3">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="4">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="5">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="6">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="7">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="8">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="9">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="10">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <ul data-index="11">
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+  <button type="button">输出</button>
+</body>
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/underscore.js/1.8.3/underscore.js"></script>
+
+<script>
+  /**
+   * [Answer description] 答案的全局变量
+   * @type {Array}
+   */
+  var Answer = [];
+  const TYPE = ['老虎型', '孔雀型', '猫头鹰型', '变色龙型'];
+  const RESULT = {
+    'a': 1,
+    'b': 2,
+    'c': 3,
+    'd': 4
+  }
+
+  $('li').click(function() {
+    var _this = $(this)
+    var parentIndex = _this.parent().data('index');
+    var value = _this.text();
+    //利用稀疏数组
+    Answer[parentIndex] = value;
+    hasChecked(_this);
+  });
+
+  $('button').click(function() {
+
+    var Score = {};
+    // 分割成二维数组，方便类型使用
+    var new_answer = _.toArray(_.groupBy(Answer, function(num, index){ return Math.floor(index/3);}));
+
+    $.each(new_answer, function(index, val) {
+      Score[TYPE[index]] = computingResult(val);
+    });
+
+    console.log(Score);
+  })
+
+  // 获取选中样式
+  function hasChecked(element) {
+    element.addClass('checked').siblings().removeClass('checked');
+  }
+  /**
+   * 计算结果
+   */
+  function computingResult(answer, result) {
+    var result = 0;
+    $.each(answer, function(index, val) {
+      if (val) {
+        var key = val.toLowerCase();
+        result += RESULT[key];
+      }
+    });
+    return result;
+  }
+
+</script>
+</html>

@@ -1,0 +1,88 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Roboto, "Droid Sans Fallback", arial, sans-serif;
+  background: #fff;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.hots-bar {
+  position: relative;
+  height: 39px;
+  line-height: 39px;
+  font-size: 14px;
+  border-bottom: 1px solid #fff;
+  z-index: 999;
+  text-align: center;
+}
+.hots-bar .hot {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+  height: 100%;
+}
+.hots-bar .hot-all,
+.hots-bar .hot-more {
+  position: absolute;
+  top: 0;
+  width: 90px;
+  left: -90px;
+  z-index: 3;
+}
+.hots-bar .hots-cnt {
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+.hots-bar .hots-bd {
+  white-space: nowrap;
+  height: 100%;
+  overflow-y: hidden;
+}
+.hots-bar .active:before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  bottom: 0;
+  height: 3px;
+  background: #eb5a28;
+}
+.hots-bar .hot-more {
+  right: -47rem;
+  left: auto;
+  width: 47rem;
+}
+.hots-wp {
+  position: relative;
+  height: 39px;
+  margin-right: 47px;
+  margin-left: 90px;
+}
+.hots-wp .hot-all:after,
+.hots-wp .hot-more:after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background-image: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0) 55%);
+}
+.hots-wp .hot-more:after {
+  left: -2px;
+  right: auto;
+  background-image: radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0) 55%);
+}

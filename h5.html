@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Document</title>
+</head>
+<body>
+    <div id="num"></div>
+</body>
+<script src="shake.js"></script>
+<script src="http://cdn.bootcss.com/pouchdb/6.1.0/pouchdb.min.js"></script>
+<script type="text/javascript">
+    window.onload = function() {
+
+        //create a new instance of shake.js.
+        var myShakeEvent = new Shake({
+            threshold: 1
+        });
+
+        // start listening to device motion
+        myShakeEvent.start();
+
+        // register a shake event
+        window.addEventListener('shake', shakeEventDidOccur, false);
+
+        var num = document.querySelector('#num');
+        //shake event callback
+        var s = 3;
+        function shakeEventDidOccur () {
+            s--;
+            num.innerHTML = s;
+        }
+    };
+
+    var User = [
+        {
+            phone: 1,
+            name: 'xx'
+        }
+    ]
+
+    User.forEach(function (v) {
+        console.log(v)
+    });
+
+
+    var k = ['']
+
+
+    // 都是第三次中奖
+    // 是否玩过记录到localstorage里面 仅仅两 其他都是无限玩，
+    // 非数据手机号，永远无法中奖
+    // 表单验证
+</script>
+</html>
